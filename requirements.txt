@@ -5,4 +5,7 @@ werkzeug~=3.0.1
 flask_sqlalchemy==3.1.1
 Flask_Login==0.6.3
 gunicorn==21.2.0
+psycopg2-binary==2.9.9
+Flask_WTF==1.2.1
+Flask_CKEditor==0.5.1
 python-dotenv~=1.0.0
