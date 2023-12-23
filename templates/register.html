@@ -1,0 +1,30 @@
+{% include "header.html" %}
+{% from "bootstrap5/form.html" import render_form %}
+{% block content %}
+
+<h1 class="register">Register</h1>
+<div class="render-form mx-5 mb-5 my-5">
+    <div class="form-item" style="margin:auto;">
+        {% with messages = get_flashed_messages() %}
+        {% for message in messages %}
+        {% if message %}
+        <div class="flash_message">
+            {{ message }}
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endwith %}
+        {{ form.csrf_token }}
+        {{ render_form(form) }}
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}
+
+
+
+{% include "footer.html" %}

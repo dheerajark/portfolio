@@ -1,0 +1,29 @@
+
+{% include "header.html" %}
+<!--content-->
+{% if admin %}
+<div class="px-4 py-5 my-5 text-center">
+    <img class="d-block mx-auto mb-4" src="{{ admin.profile_img_url }}" alt="" width="90" height="90">
+    <h1 class="display-5 fw-bold text-body-emphasis">{{ admin.title }}</h1>
+    <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">{{ admin.admin_intro|safe }}</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+<!--            <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Primary button</button>-->
+            <a class="index_project_button" href="{{ url_for('project') }}">
+                <button type="button" class="btn btn-outline-secondary btn-lg px-4 mx-sm-5 project-button btn-dark">Projects</button>
+            </a>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% if current_user.is_authenticated %}
+<div class="profile_edit">
+    <a class="info" href="{{ url_for('edit_profile') }}">
+    <button type="button" class="btn btn-lg px-4 mx-sm-5 profile_edit_button btn-success">Edit Profile</button>
+    </a>
+</div>
+{% endif %}
+
+
+{% include "Footer.html" %}

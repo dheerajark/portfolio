@@ -1,0 +1,92 @@
+.nav-item {
+margin-right: 20px;
+}
+
+.card-link {
+text-decoration: none;
+}
+
+.d-block.mx-auto.mb-4 {
+border-radius: 90px;
+}
+
+.col-md-10.col-lg-8.col-xl-7.mt-5 p{
+font-size: large;
+font-weight: 600;
+}
+
+.container.footer {
+max-width: 100%;
+}
+
+.form-item {
+max-width: 50%;
+margin: auto;
+margin-bottom: 5rem;
+}
+
+.register, .login, .post-project {
+margin: 2rem 0rem;
+text-align: center;
+font-weight: 500;
+}
+
+div.button {
+display: flex;
+justify-content: flex-end;
+margin: 2rem 1rem;
+padding: 0rem 1rem;
+}
+
+.project-button {
+display: none;
+}
+
+.index_project_button {
+display: flex;
+justify-content: center;
+text-decoration: none;
+}
+
+.edit_button {
+display: flex;
+justify-content: flex-end;
+margin: 0rem 0rem;
+}
+
+.btn.btn-primary.btn-lg.px-4.me-md-2.edit-button {
+margin: 0rem 2rem;
+}
+
+.profile_edit {
+display: flex;
+justify-content: center
+}
+
+.user_profile {
+display: flex;
+justify-content: center;
+}
+
+.flash_message {
+color: red;
+}
+
+@media (max-width: 600px) {
+.form-item {
+max-width: 85%;
+}
+
+.project-button {
+display: block;
+}
+}
+
+
+
+
+
+
+
+
+

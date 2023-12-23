@@ -1,0 +1,23 @@
+{% include "header.html" %}
+{% from "bootstrap5/form.html" import render_form %}
+
+{% block content %}
+
+{% if is_edit %}
+<h1 class="post-project">Edit Project.</h1>
+{% else %}
+<h1 class="post-project">I See You Doing Something Great Everytime.</h1>
+{% endif %}
+<div class="project-form">
+    <div class="form-item">
+        {{ form.csrf_token }}
+        {{ ckeditor.load() }}
+        {{ render_form(form) }}
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+{% include "footer.html" %}

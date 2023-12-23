@@ -1,0 +1,40 @@
+{% include "header.html" %}
+
+{% block content %}
+{% if project %}
+<div class="container col-xxl-8 px-4 py-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+      <div class="col-10 col-sm-8 col-lg-6">
+<!--        Image-->
+        <img src="{{ project.project_img_url }}" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+      </div>
+      <div class="col-lg-6">
+<!--        Project-Name-->
+        <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">{{ project.project_name }}</h1>
+<!--        Project-Summary-->
+        <p class="lead">{{ project.technology_used_summary|safe }}</p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            {% if web_button %}
+            <a href="{{ project.website_url }}"><button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Web Link</button></a>
+            {% endif %}
+            <a href="{{ project.git_hub_url }}"><button type="button" class="btn btn-outline-secondary btn-lg px-4 btn-dark">Repo Link</button></a>
+        </div>
+      </div>
+    </div>
+</div>
+
+{% endif %}
+
+{% if current_user.is_authenticated %}
+<div class="edit_button">
+    <a href="{{ url_for('edit_project', post_id=project.id) }}"><button type="button" class="btn btn-primary btn-lg px-4 me-md-2 edit-button">Edit Project</button></a>
+</div>
+{% endif %}
+
+
+{% endblock %}
+
+
+
+
+{% include "footer.html" %}
