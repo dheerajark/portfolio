@@ -25,7 +25,7 @@ margin: auto;
 margin-bottom: 5rem;
 }
 
-.register, .login, .post-project {
+.register, .login, .post-project, .edit-profile {
 margin: 2rem 0rem;
 text-align: center;
 font-weight: 500;

@@ -133,7 +133,7 @@ def home():
     if not admin_profile:
         return render_template("index.html")
     else:
-        return render_template("index.html", admin=admin_profile)
+        return render_template("index.html", admin_profile=admin_profile)
 
 
 @app.route("/project")
