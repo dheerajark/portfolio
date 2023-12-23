@@ -68,5 +68,3 @@ Welcome to my portfolio website! This user-friendly website allows anyone to cre
 Contributions are welcome! If you have any suggestions, improvements, or feature requests, feel free to open an issue or create a pull request.
 
 
-
-Feel free to customize this README with more details or specific instructions based on your project's requirements.
