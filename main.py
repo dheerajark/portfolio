@@ -43,7 +43,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get("FLASK_FORM_KEY")
 
 # SQLAlchemy database uri
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DB_URI", "sqlite:///project.db")
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DB_URI2", "sqlite:///project.db")
 
 # configure Flask-Login
 login_manager = LoginManager()
