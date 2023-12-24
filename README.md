@@ -63,6 +63,11 @@ Welcome to my portfolio website! This user-friendly website allows anyone to cre
 
    Open your web browser and go to `http://localhost:5000` to view the website locally.
 
+6. Manual Registration and Login:
+
+   - Navigate to the registration page by adding /register to the website URL 'http://localhost:5000/register'.
+   - After registering, navigate to the login page by adding /login to the website 'http://localhost:5000/login'.
+
 ## Contribution
 
 Contributions are welcome! If you have any suggestions, improvements, or feature requests, feel free to open an issue or create a pull request.
