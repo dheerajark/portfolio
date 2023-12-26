@@ -76,7 +76,7 @@ class ProjectPost(db.Model):
     technology_used_summary = db.Column(db.String, nullable=False)
     git_hub_url = db.Column(db.String(250), nullable=False)
     website_url = db.Column(db.String(250), nullable=True)
-    project_img_url = db.Column(db.String(250), nullable=True)
+    project_img_url = db.Column(db.String(250), nullable=False)
 
 
 class User(db.Model, UserMixin):
