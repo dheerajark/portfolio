@@ -52,7 +52,7 @@ login_manager.init_app(app)
 
 @login_manager.user_loader
 def load_user(user_id):
-    return db.get_or_404(User, user_id)
+    return db.get_or_404(PortfolioUser, user_id)
 
 
 # initialize bootstrap with app
@@ -79,7 +79,7 @@ class ProjectPost(db.Model):
     project_img_url = db.Column(db.String(250), nullable=False)
 
 
-class User(db.Model, UserMixin):
+class PortfolioUser(db.Model, UserMixin):
     __tablename__ = "user"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
@@ -146,13 +146,13 @@ def project():
 @app.route("/register", methods=["GET", "POST"])
 def register():
     register_form = RegisterForm()
-    existing_user = User.query.first()
+    existing_user = PortfolioUser.query.first()
     if register_form.validate_on_submit():
         if existing_user:
             flash("Sorry, only one user allowed. User already exists")
             return redirect(url_for("register"))
         else:
-            user = User(
+            user = PortfolioUser(
                 name=register_form.name.data,
                 email_id=register_form.email.data,
                 password=generate_password_hash(
@@ -174,7 +174,7 @@ def login():
     login_form = LoginForm()
     if login_form.validate_on_submit():
         email = login_form.email.data
-        user = db.session.query(User).filter_by(email_id=email).first()
+        user = db.session.query(PortfolioUser).filter_by(email_id=email).first()
         if not check_password_hash(user.password, password=login_form.password.data):
             flash("Password is incorrect")
             return redirect(url_for("login"))
