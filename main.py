@@ -84,7 +84,7 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(30), nullable=False)
     email_id = db.Column(db.String(75), unique=True, nullable=False)
-    password = db.Column(db.String(75), nullable=False)
+    password = db.Column(db.String(200), nullable=False)
 
 
 class Profile(db.Model):
