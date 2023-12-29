@@ -73,6 +73,7 @@ class ProjectPost(db.Model):
     __tablename__ = "projects"
     id = db.Column(db.Integer, primary_key=True)
     project_name = db.Column(db.String(75), unique=True, nullable=False)
+    project_rank = db.Column(db.Float, nullable=False)
     technology_used_summary = db.Column(db.String, nullable=False)
     git_hub_url = db.Column(db.String(250), nullable=False)
     website_url = db.Column(db.String(250), nullable=True)
@@ -138,8 +139,9 @@ def home():
 
 @app.route("/project")
 def project():
-    result = ProjectPost.query.all()
-    return render_template("Project.html", posts=result)
+    result = db.session.query(ProjectPost).order_by(ProjectPost.project_rank)
+    all_posts = result.all()
+    return render_template("Project.html", posts=all_posts)
 
 
 # create register
@@ -193,11 +195,16 @@ def post_project():
     if post_project_form.validate_on_submit():
         project_post = ProjectPost(
             project_name=post_project_form.project_title.data,
+            project_rank=post_project_form.project_rank.data,
             technology_used_summary=post_project_form.project_summary.data,
             git_hub_url=post_project_form.project_github_url.data,
             website_url=post_project_form.project_website_url.data,
             project_img_url=post_project_form.project_image_url.data,
         )
+        existing_rank = db.session.query(ProjectPost).filter_by(project_rank=post_project_form.project_rank.data).first()
+        if existing_rank:
+            flash("Rank already exist. You can use decimal to order it.")
+            return redirect(url_for("post_project"))
         db.session.add(project_post)
         db.session.commit()
         return redirect(url_for("project"))
@@ -212,17 +219,29 @@ def edit_project(post_id):
     project_to_edit = db.get_or_404(ProjectPost, post_id)
     form = PostProjectForm(
         project_title=project_to_edit.project_name,
+        project_rank=project_to_edit.project_rank,
         project_github_url=project_to_edit.git_hub_url,
         project_website_url=project_to_edit.website_url,
         project_image_url=project_to_edit.project_img_url,
         project_summary=project_to_edit.technology_used_summary,
     )
     if form.validate_on_submit():
+        # new_rank = form.project_rank.data
+        # # Check if the new rank already exists for another project
+        # existing_project_with_rank = ProjectPost.query.filter(ProjectPost.project_rank == new_rank).first()
+        existing_project_with_rank = db.session.query(ProjectPost).filter_by(
+            project_rank=form.project_rank.data).first()
+        if existing_project_with_rank:
+            flash("Rank already exists. You can use a decimal to order it.")
+            return redirect(url_for("edit_project", post_id=post_id))
+
         project_to_edit.project_name = form.project_title.data
+        project_to_edit.project_rank = form.project_rank.data
         project_to_edit.git_hub_url = form.project_github_url.data
         project_to_edit.website_url = form.project_website_url.data
         project_to_edit.project_img_url = form.project_image_url.data
         project_to_edit.technology_used_summary = form.project_summary.data
+
         db.session.commit()
         return redirect(url_for("project_element", project_id=post_id))
     return render_template("post-project.html", form=form, is_edit=True)

@@ -10,6 +10,15 @@
 {% endif %}
 <div class="project-form">
     <div class="form-item">
+        {% with messages = get_flashed_messages() %}
+        {% for message in messages %}
+        {% if message %}
+        <div class="flash_message">
+            {{ message }}
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endwith %}
         {{ form.csrf_token }}
         {{ ckeditor.load() }}
         {{ render_form(form) }}

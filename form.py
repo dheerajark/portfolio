@@ -28,6 +28,7 @@ class LoginForm(FlaskForm):
 # Post-Project
 class PostProjectForm(FlaskForm):
     project_title = StringField(label="Project Title", validators=[DataRequired()])
+    project_rank = StringField(label="Project rank (You can use decimal for uniqueness)", validators=[DataRequired()])
     project_github_url = URLField(label="Project Git-hub Link", validators=[DataRequired()])
     project_website_url = URLField(label="Project Website Link (optional)")
     project_image_url = URLField(label="Project Image Url", validators=[DataRequired()])
