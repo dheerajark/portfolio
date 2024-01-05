@@ -46,19 +46,14 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
-    let lastScrollTop = 0;
-    $(window).scroll(function (event) {
-        let st = $(this).scrollTop();
-        if (st > lastScrollTop) {
-            // Scroll down
-            $('#navbar').removeClass('fixed-top');
-            $('#navbar').addClass('d-none');
-        } else {
-            // Scroll up
-            $('#navbar').addClass('fixed-top');
-            $('#navbar').removeClass('d-none');
-        }
-        lastScrollTop = st;
+    // Optionally, you can remove the jQuery and vanilla JavaScript mixed approach
+    // since Bootstrap provides the functionality for toggling the collapse
+    document.addEventListener("DOMContentLoaded", function() {
+        const navbarToggler = document.querySelector(".navbar-toggler");
+        navbarToggler.addEventListener("click", function() {
+            const navbarCollapse = document.querySelector("#navbarNav");
+            navbarCollapse.classList.toggle("show");
+        });
     });
 </script>
 </body>

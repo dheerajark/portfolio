@@ -16,6 +16,7 @@ font-weight: 600;
 }
 
 .container.footer {
+display: flex;
 max-width: 100%;
 }
 
@@ -71,6 +72,19 @@ justify-content: center;
 .flash_message {
 color: red;
 }
+
+/* Hide the navigation menu by default */
+.navigation-menu {
+  display: none;
+}
+
+/* Show the navigation menu when it has the active class */
+.navigation-menu.active {
+  display: block;
+}
+
+
+
 
 @media (max-width: 600px) {
 .form-item {
